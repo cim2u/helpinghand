@@ -1,55 +1,31 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate, Link } from "react-router-dom";
+import "./Login.css"; // Import CSS for styling
 
 function Login() {
-  const navigate = useNavigate(); // Hook for navigation
-  const [formData, setFormData] = useState({ username: "", password: "" });
-  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  // Handle input change
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Store token and redirect user
-        localStorage.setItem("token", data.token);
-        navigate("/dashboard"); // Redirect to dashboard after login
-      } else {
-        setError(data.message || "Login failed!");
-      }
-    } catch (error) {
-      setError("Error connecting to the server.");
-    }
+  const handleLogin = (event) => {
+    event.preventDefault();
+    // Add login logic here (e.g., authentication API call)
+    navigate("/dashboard"); // Navigate to dashboard after login
   };
 
   return (
-    <div>
-      <h2>Login Page</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="username" placeholder="Username" required onChange={handleChange} />
-        <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
-        <button type="submit">Login</button>
-      </form>
+    <div className="login-container"> {/* Background Blur Container */}
+      <div className="login-box"> {/* Login Form Box */}
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          <input type="text" placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit">Login</button>
+        </form>
+        <p>
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </p>
+      </div>
     </div>
   );
 }
 
 export default Login;
-
-
