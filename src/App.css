@@ -1,359 +1,277 @@
-/* General Styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', sans-serif, 'Outfit';
-  background-color:#cbd4ff;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;800&family=Vujahday+Script&display=swap');
+
+.app-container {
   display: flex;
-  justify-content: space-between; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  min-height: 100vh; /* Ensures full viewport height */
-  width: 100vw; /* Full viewport width */
-  overflow-x: hidden; /* Prevents horizontal scrolling */
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  position: relative;
 }
-/* Container Box */
-.box {
-  background-color: #cbd4ff;
-  padding: 15px 30px;
-  color: #ffffff;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  z-index: 4;
+
+/* Background Image with Overlay */
+.app-container::before {
+  content: "";
   position: absolute;
   top: 0;
-  left:0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 4%;
-}
-
-/* Navbar (Topbar) */
-.topbar {
-  display: flex;
-  align-items: start;
-  justify-content: left; /* Center the buttons */
+  left: 0;
+  max-height: 200%;
   width: 100%;
-  padding: 15px 30px;
-  height: 60px; /* Keep height for spacing */
-  margin-top: 240px;
-  background: none; /* Remove background */
-  z-index:7;
-  margin-left:20px;
-  top:0px;
-  position: sticky;
-  
-}
-
-/* Navigation Buttons */
-.topbar .nav-links {
-  display: flex;
-  gap: 50px; /* Keep spacing between buttons */
-  
-  
-}
-
-.topbar button {
-  background: #65558F; /* Button background */
-  border: none;
-  color: white;
-  font-size: 20px;
-  padding: 12px 20px; /* Adjust padding for better appearance */
-  border-radius: 120px; /* Rounded corners */
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  position:sticky;
-}
-
-.topbar button:hover {
-  background: darkblue;
-  transform: scale(1.05); /* Slight scale effect on hover */
-}
-
-
-/* Search Bar */
-.search-container {
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  width: 100%;
-  margin-right: 170px;
-  
-  position: sticky;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 10px 15px;
-  width: 90%;
-  max-width: 490px;
-  position: sticky;
-  left:0%;
-  margin-bottom:1000px;
-  z-index:7;
-}
-
-.search-box svg {
-  font-size: 18px;
-  color: #65558F;
-  position: absolute;
-  left: 460px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.search-box input {
-  width: 100%;
-  padding: 10px 10px 10px 40px; /* Left padding to avoid overlapping icon */
-  font-size: 16px;
-  border: none;
-  outline: none;
-  background: transparent;
-  border-radius: 25px;
-  
-}
-
-.search-box input:focus {
-  box-shadow: 0 0 5px rgba(101, 85, 143, 0.5);
-}
-
-
-/* Grid Layout */
-.grid-container {
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(297px, 1fr)); /* Each item is 297px wide */
-  gap: 20px; /* Spacing between items */
-  padding: 20px;
-  max-width: 2000px; /* More space for larger screens */
-  right: 1010px; /* Aligns to the left */
-  width: auto; /* Ensures grid adjusts to content */
-  z-index: 4;
-  top: 47%;
-}
-
-/* Grid Items */
-.grid-item {
-  background: #f8f8f8;
-  width: 297px; /* Fixed width */
-  height: 255px; /* Fixed height */
-  padding: 20px;
-  text-align: left;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Hover Effect */
-.grid-item:hover {
-  transform: scale(1.05);
-  background: #e0e0e0;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(297px, 1fr)); /* Keeps item size consistent */
-    left: 0;
-    justify-content: center; /* Center on smaller screens */
-  }
-
-  .grid-item {
-    width: 100%; /* Makes it responsive */
-  }
-}
-
-
-
-
-/* Image */
-.image1 {
-  background: url('https://s3-alpha-sig.figma.com/img/e7fc/ff24/480730e0c12f9a7e63fe72479a11dd1d?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TqMYse6WcS9WBioW99rnGU9pcmfEOeuakVyFh3PCwz-1Hg~MPV6vX49KCfu7ZtCUImuFZnJczHNXDgplPS0jEjB9uMTy2duxOf7-iBhCL86Qirrvbol2lpVnQN5w~TI9oOcA7SAwE6qzmcvG7EqIdt0UU6HgymF4nrRXhXIZ6nTii4wlOVJS~brap2E9RKxz-ClQ9OUYc1G6YajLUzrUJUzbGJofPy8oO238dhG~OYzGEkg3icq9ub0X0c-EFc4aM7sgrl7NZCqM9obPa7~C71ABlXlG3XTU~I9N09Wdk9KZH17pLUgkZH4orNmGPvUMB~mgVqQK69yj1affbWaLXA__') no-repeat center;
+  height:100%;
+  background: url('https://s3-alpha-sig.figma.com/img/cddc/c69c/3f6f0a76202e9185950e2cc3030ddcf5?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=DUaQPfQUaBbadtppnl6ad2-UUP0HYBv4o8ubqunNELMB4H3OeDadLvdtLje9Dp1~6O99fS5OXHlO5fWx2-e-abVAsbb8N5M0Tb26c885Hojsm0SVlzZnleqERYP89Q1rJWbmA9i0nwYJDCvrkezUizNy8GMtFWVRx1kU4tld330xi0UB3BdcugOR9YnkMcRMqdzbqlB~31971Sljgs-yWC50jn1J96cRzOqgnjoDmBhxigeZRqZ60YwMGk4FjygqW47~oKTmXY4RSiQDO6calpjtMmr1mtppli80zwDQiYt4E3v5ZMJ3SfORch~vqXnGklz-dPfcDy96kxEslu1ltA__') 
+  no-repeat center center;
   background-size: cover;
-  width: 100000px;
-  max-width: 1390px;
-  height: 300px;
-  border-radius: 0px;
-  position: absolute;
-  top: 0px;  /* Adjust position above .box-help */
-  left: 552px;
-  z-index: 4; /* Ensures image is above */
+  background-position: center;
+  opacity: 0.5; /* Adjust transparency */
+  z-index: -1;
 }
 
-/* Text */
-.hand, .helping {
-  text-align: left;
-  position: absolute;
-  z-index: 5; /* Ensures text is above image */
-  
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  opacity: 90;
+  height: 365px;
+  width: auto;
+  position: relative;
+  z-index: 1;
 }
 
-/* Hand Text - Above Helping */
-.hand {
+/* HelpingHand Logo */
+.hh-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  z-index:2;
+
+}
+
+/* Helping */
+.hh-helping {
+  width: 503px;
+  height: 141px;
+  position: absolute;
+  top: 29px;
+  left:84px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 128px;
+  line-height: 161.28px;
+  color: rgb(84, 93, 216);
+  text-align: center;
+}
+
+/* Hand */
+.hh-hand {
   width: 313px;
   height: 204px;
   position: absolute;
   top: 88px;
-  left: 50px;
-  font-family: "Vujahday Script", cursive;
+  left:96px;
+  font-family: 'Vujahday Script', cursive;
   font-weight: 400;
   font-size: 150px;
   line-height: 204px;
-  letter-spacing: 0%;
-  box-shadow: 0px 4px 4px 0px #1c3a8500;
-  z-index: 5; /* Higher than .helping to appear above */
-}
-
-/* Helping Text - Below Hand */
-.helping {
-  width: 503px;
-  height: 141px;
-  position: absolute;
-  top: 20px;
-  left: 10px;
-  font-family: "Outfit", sans-serif;
-  font-weight: 800;
-  font-size: 128px;
-  line-height: 161.28px;
-  letter-spacing: 0%;
-  background: rgba(14, 70, 255, 0);
-  border: 1px solid #ff060600;
-  box-shadow: 0px 4px 4px rgba(135, 96, 208, 0);
-  z-index: 4; /* Lower than .hand to stay below */
-}
-
-
-/* Box Help */
-.box-help {
-  background-color: #2e12af;
-  padding: 15px 30px;
   color: white;
-  width: 75.5%;
-  height: 270px;
-  z-index: 3; /* Lower than image and text */
-  position: absolute;
-  top: 0px; /* Lowered */
-  left: 0%;
-  transform: translateX(-50%);
+  text-align: center;
+  z-index:3;
 }
-.container {
+
+/* Tagline */
+.hh-tagline {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25.2px;
+  width: auto;
+  height: 48px;
   position: absolute;
-  top: 278px;
-  right: 260px;
+  top: 249px;
+  left: 1490px;
+  color: rgb(253, 253, 253);
+  padding: 10px;
+}
+
+/* Navigation */
+.navbar {
   display: flex;
+  justify-content: space-between;
   gap: 20px;
-  z-index: 10; /* Increased z-index */
-}
-.login-container {
-  pointer-events: none;
-}
-
-.login-box {
-  pointer-events: auto;
+  position: absolute;
+  top: 270px;
+  left: 115px;
+  width:auto;
 }
 
-/* Button Styles */
-.login-btn,
-.sign-up-btn {
-  background-color: #65558F; /* Default button color */
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-size: 18px;
-  
-  font-weight: bold;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  text-decoration: none; /* Remove underline for links */
+.hh-nav-link {
   display: inline-block;
+  width: 94px;
+  height: 50px;
+  background: #65558F;
+  color: white;
+  font-weight: 500;
+  border-radius: 100px;
   text-align: center;
-  
+  line-height: 40px;
+  padding: 5px 10px;
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  font-family: 'Outfit',sans-serif;
+  font-weight: bold;
 }
 
-/* Hover Effect */
-.login-btn:hover,
-.sign-up-btn:hover {
-  background-color: darkblue;
-  transform: scale(1.05);
+.hh-nav-link:hover {
+  background: #4e4470;
 }
 
-/* Stats Section (Most Purchased & Most Donated) */
-.stats-container {
-  position: absolute;
-  top: 363px; /* Below the login/signup buttons */
-  right: 160px;
+/* Active button (Orange when clicked) */
+.hh-nav-link.active {
+  background: #e67e22; /* Orange */
+  color: white;
+}
+
+/* Auth Buttons */
+.auth-buttons {
   display: flex;
-  flex-direction: absolute;
-  gap: 20px;
-  z-index: 4;
-  width:656px;
-  height:234px;
+  gap: 8px;
 }
 
-/* Column Styling */
-.column {
-  background: #f5f5f5; /* Light background */
-  padding: 20px;
-  width: 250px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
-  height: 660px;
+.auth-buttons.hidden {
+  display: none;
 }
 
-/* Column Hover Effect */
-.column:hover {
-  transform: translateY(-5px);
-}
-
-/* Heading Styling */
-.column h3 {
-  color: #333;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-/* Content Box */
-.content-box {
-  background: #fff;
-  height: 590px;
-  border-radius: 10px;
-  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
+/* Login Button Container */
+.login-container {
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 14px;
-  color: #666;
+  align-items: center;
+  position: absolute;
+  top: 75px;
+  left: 1520px;
 }
 
-/* Responsive Styling */
+/* Subscribe Button Container */
+.subscribe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 25px;
+  left: 1756px;
+}
+
+/* Login Button */
+.login-container .hh-auth-button {
+  width: 206px;
+  height: 58px;
+  border-radius: 100px;
+  background: #65558F;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  
+
+}
+
+.login-container .hh-auth-button:hover {
+  background: #4e4470;
+}
+
+/* Subscribe Button */
+.subscribe-container .hh-auth-button {
+  width: 206px;
+  height: 57px;
+  border-radius: 100px;
+  background: #ffffff;
+  color:#4e4470;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.subscribe-container .hh-auth-button:hover {
+  background: #e67e22;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .container {
-    position: static;
+  .hh-helping, .hh-hand {
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar {
+    flex-direction: column;
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #34495e;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+
+  .auth-buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .login-container, 
+  .subscribe-container {
+    display: flex;
     justify-content: center;
-    margin-top: 10px;
-  }
-
-  .stats-container {
-    position: static;
     align-items: center;
-    margin-top: 20px;
-    z-index: 4;
-
   }
-
-  .column {
-    width: 80%;
+  
+  .hh-tagline {
+    width: auto;
+    left: 0;
+    top: auto;
+    bottom: 10px;
+    text-align: center;
   }
+}
+
+.footer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  font-size: 19px;
+  font-weight: 400;
+  color: white;
+  background: none;
+}
+
+
+/* Highlight the active button with an orange background */
+.hh-auth-button.active-button {
+  background-color: orange;
+  color: white; /* Ensure text is readable when background is orange */
 }
